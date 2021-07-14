@@ -1,0 +1,35 @@
+#Guess-the-number
+import random
+def out_red(text):
+    print("\033[31m{}".format(text))
+def out_green(text):
+    print("\033[32m{}".format(text))
+def out_blue(text):
+    print("\033[34m{}".format(text))
+def out_purple(text):
+    print('\033[35m{}'.format(text))
+def napominanie():
+    if popitki == 2:
+        out_blue('Attempts left:: 4')
+    if popitki == 3:
+        out_blue('Attempts left:: 3')
+    if popitki == 4:
+        out_blue('Attempts left:: 2')
+    if popitki == 5:
+        out_blue('Attempts left:: 1')
+secretChislo = random.randint(1,25)
+print('Guess the number from 1 to 25. You have 5 attempts.')
+for popitki in range (1,6):
+    napominanie()
+    print('Your option: ', end='')
+    chislo = int(input())
+    if chislo > secretChislo:
+        out_purple('Your number is bigger than mine')
+    elif chislo < secretChislo:
+        out_purple('Your number is less than mine')
+    else:
+        break
+if chislo == secretChislo:
+    out_green('Right! Number of attempts: ' + str(popitki))
+else:
+    out_red('The number of attempts has ended. The correct number: ' + str(secretChislo))
